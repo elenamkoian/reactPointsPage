@@ -1,0 +1,57 @@
+.Button {
+  background-color: transparent;
+  border: none;
+  color: #8c8ebe;
+  border-radius: 4px;
+  padding: 6px 12px;
+  height: 36px;
+  line-height: 24px;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &.Text {
+    &:hover {
+      background: rgba(white, 0.1);
+    }
+  }
+
+  &.Contained {
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2ba6a1 0%, #03f4a7 100%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    color: #14343e;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 8px 32px;
+  }
+
+  &.Outlined {
+    border-radius: 8px;
+    border: 2px solid #03F4A7 ;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    color: rgba(203, 203, 209, 1);
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 6px 42px;
+  }
+
+  &.Normal {
+    padding: 6px 12px;
+    height: 36px;
+    line-height: 24px;
+  }
+
+  &.Small {
+    padding: 4px 8px;
+    height: 30px;
+    line-height: 22px;
+  }
+
+  &.Big {
+    padding: 8px 16px;
+    height: 42px;
+    line-height: 26px;
+  }
+}

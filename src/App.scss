@@ -1,0 +1,190 @@
+.AppRoot {
+  //$primaryColor: #2B2A50;
+
+  $primaryColor: rgba(10, 25, 41, 1);
+
+  height: 100%;
+  background-color: $primaryColor;
+
+  .Page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Navbar {
+    $primaryColor: rgba(27, 21, 56, 1);
+
+    background-color: $primaryColor;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+
+    .ButtonList {
+      margin: 0 24px;
+
+      .Button {
+        padding: 23px 16px;
+        margin: 1px;
+        font-family: Roboto, sans-serif;
+        letter-spacing: 1px;
+        font-size: 12px;
+        border:  none;
+        color: rgba(140, 142, 190, 1);
+        background: transparent;
+
+        //&.Active {
+        //  background: -webkit-linear-gradient(rgba(43, 166, 161, 1), rgba(3, 244, 167, 1));
+        //  -webkit-background-clip: text;
+        //  -webkit-text-fill-color: transparent; cursor: pointer;
+        //  border-bottom: 3px solid rgba(43, 166, 161, 1);
+        //}
+      }
+    }
+
+    .LogoWithTitle {
+      display: flex;
+      align-items: center;
+      margin-left: 48px;
+
+      .PageTitle {
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        font-family: Roboto, sans-serif;
+        letter-spacing: 2px;
+        margin-left: 10px;
+        font-size: 20px;
+        background: -webkit-linear-gradient(rgba(43, 166, 161, 1), rgba(3, 244, 167, 1));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+///////////////
+
+  .Breadcrumbs {
+    height: 44px;
+    margin: 24px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      margin-left: 8px;
+      display: flex;
+      align-items: center;
+      color: rgba(208, 207, 213, 1);
+      letter-spacing: 1px;
+    }
+
+    .CreateBtn {
+      font-weight: bold;
+      width: 142px;
+      height: 44px;
+      border-radius: 10px;
+      background-image: linear-gradient(to right, rgba(43, 166, 161, 1) 0%, rgba(3, 244, 167, 1));
+      border: none;
+      text-transform: uppercase;
+      font-size: 12px;
+      cursor: pointer;
+      color: #14343E;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  //////////
+
+  .CoordinateList {
+    width: 397px;
+    height: 596px;
+    margin: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .Coordinate {
+      min-width: 400px;
+      height: 20px;
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid rgba(16, 49, 83, 1);
+      background: rgba(0, 30, 60, 1);
+      color: rgba(203, 203, 209, 1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+
+      .Avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid rgba(43, 166, 161, 1);
+        height: 26px;
+        width: 26px;
+      }
+    }
+  }
+
+  .CanvasWBtn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 8px;
+
+    .Canvas {
+      //width: 100%; // todo: remove this
+      height: 420px;
+      border: 1px solid rgba(16, 49, 83, 1);
+      margin: 0 24px 32px 32px;
+      border-radius: 10px;
+    }
+
+    .Footer {
+      display: flex;
+      justify-content: space-between;
+
+      .FooterBtnList {
+        display: flex;
+        margin: 0 24px 32px 32px;
+        gap: 20px;
+      }
+
+      .FooterInputList {
+        display: flex;
+        margin-left: 32px;
+        height: 40px;
+        //margin: 0 24px 32px 32px;
+
+        .Input {
+          border: 1px solid #39C095;
+          border-radius: 4px;
+          margin-right: 8px;
+          width: 110px;
+          background-color: transparent;
+          padding: 10px;
+          color: rgba(208, 207, 213, 1);
+        }
+      }
+    }
+
+
+  }
+
+  //.Canvas {
+  //  //width: 811px; // todo: remove this
+  //  height: 420px;
+  //  width: 100%;
+  //  background-color: rgba(37, 32, 73, 1);
+  //  margin: 0 24px 32px 32px;
+  //  border-radius: 10px;
+  //}
+
+  .Content {
+    display: flex;
+
+  }
+}
+
