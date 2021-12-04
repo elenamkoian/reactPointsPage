@@ -1,0 +1,31 @@
+@import "src/common-variables";
+
+.Breadcrumbs {
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $page-padding;
+
+  span {
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    color: rgba(208, 207, 213, 1);
+    letter-spacing: 1px;
+  }
+
+  .CreateBtn {
+    font-weight: bold;
+    width: 142px;
+    height: 44px;
+    border-radius: 10px;
+    background-image: $green-gradient;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    color: $btn-text-green;
+    box-shadow: $box-shadow;
+  }
+
+}

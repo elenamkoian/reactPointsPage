@@ -1,0 +1,19 @@
+.PointCreateForm {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  .InputsDiv {
+    display: flex;
+    gap: 16px;
+  }
+
+  .ActionsDiv {
+    display: flex;
+    gap: 40px;
+
+    & > button {
+      font-weight: bold;
+    }
+  }
+}

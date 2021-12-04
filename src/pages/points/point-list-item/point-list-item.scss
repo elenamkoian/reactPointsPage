@@ -1,0 +1,24 @@
+@import "../../../common-variables";
+
+.PointListItem {
+  color: $white;
+  height: 20px;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid $border-blue;
+  background: $board-item-blue;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+
+  .Avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $green;
+    height: 26px;
+    width: 26px;
+  }
+}

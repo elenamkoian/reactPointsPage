@@ -1,28 +1,28 @@
-import './button.scss'
+import './button.scss';
 
 const bntSizeClassNames = {
   small: 'Small',
   normal: 'Normal',
-  large: 'Large'
-}
+  large: 'Large',
+};
 
 const btnVariantClassNames = {
   text: 'Text',
   contained: 'Contained',
-  outlined: 'Outlined'
-}
+  outlined: 'Outlined',
+};
 
 export const Button = ({ size, variant, children, ...otherProps }) => {
-  const bntSizeClassName = bntSizeClassNames[size] ?? bntSizeClassNames.normal;
+  const btnSizeClassName = bntSizeClassNames[size] ?? bntSizeClassNames.normal;
   const btnVariantClassName = btnVariantClassNames[variant] ?? btnVariantClassNames.text;
 
-  return(
+  return (
     <button
-      type='button'
-      className={`Button ${bntSizeClassName} ${btnVariantClassName}`}
+      type="button"
+      className={`Button ${btnSizeClassName} ${btnVariantClassName}`}
       {...otherProps}
     >
       {children}
     </button>
-  )
-}
+  );
+};

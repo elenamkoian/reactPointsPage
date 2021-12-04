@@ -1,23 +1,17 @@
 import { Component } from 'react';
-import { Navbar } from './navbar';
-import { BreadcrumbsBar } from './breadcrumbs-bar';
-import { CoordinateList } from './coordinate-list';
-import { Canvas } from './canvas';
+import { Navbar } from './navbar/navbar';
+import { Breadcrumbs } from './breadcrumbs/breadcrumbs';
+import { PointList } from '../pages/points/point-list/point-list';
+import { FiguresCanvas } from './figures-canvas/figures-canvas.js';
+import { PageDetailsContainer } from './page-details-container/page-details-container';
+import { PointCreateForm } from '../pages/points/point-create-form/point-create-form';
 
 export class Page extends Component {
   state = {
     pages: ['Points', 'Circles', 'Rectangles', 'Triangles'],
     activePage: 0,
-    points: [
-      { x: 7, y: 6, name: 'A' },
-      { x: 3, y: 4, name: 'B' },
-      { x: 5, y: 6, name: 'C' },
-      { x: 7, y: 8, name: 'D' },
-      { x: 1, y: 8, name: 'E' },
-      { x: 6, y: 4, name: 'F' },
-      { x: 2, y: 3, name: 'G' },
-    ],
-
+    points: JSON.parse(localStorage.getItem('points')) ?? [],
+    isFormVisible: false,
   };
 
   render() {
@@ -28,20 +22,43 @@ export class Page extends Component {
           active={this.state.activePage}
         />
 
-        <BreadcrumbsBar
+        <Breadcrumbs
+          isFormVisible={this.state.isFormVisible}
+          onVisibilityChange={() => this.handleIsFormVisible()}
           pages={this.state.pages}
           active={this.state.activePage}
         />
 
-        <div  className='Content'>
-          <CoordinateList
-            points={this.state.points}
-          />
+        <div className="PageContent">
+          <PointList points={this.state.points} />
 
-          <Canvas />
+          <PageDetailsContainer>
+            <FiguresCanvas />
+            {
+              this.state.isFormVisible && (
+                <PointCreateForm
+                  onSubmit={(point) => this.handleSubmit(point)}
+                  isFormVisible={this.state.isFormVisible}
+                  onVisibilityChange={() => this.handleIsFormVisible()}
+                />
+              )
+            }
+          </PageDetailsContainer>
+
         </div>
-
       </div>
     );
+  }
+
+  handleSubmit(point) {
+    const points = [...this.state.points, point];
+    this.setState({ points });
+    localStorage.setItem('points', JSON.stringify(points));
+  }
+
+  handleIsFormVisible() {
+    this.setState({
+      isFormVisible: !this.state.isFormVisible,
+    })
   }
 }
