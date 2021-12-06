@@ -7,7 +7,7 @@ export class PointCreateForm extends Component {
   state = {
     xAxis: '',
     yAxis: '',
-    name: '',
+    name: ''
   };
 
   render() {
@@ -17,14 +17,21 @@ export class PointCreateForm extends Component {
     return (
       <form className="PointCreateForm">
         <div className="InputsDiv">
-          <Input label="x axis" name="xAxis" value={this.state.xAxis} onChange={this.handleInputChange} />
-          <Input label="y axis" name="yAxis" value={this.state.yAxis} onChange={this.handleInputChange} />
-          <Input label="Name" name="name" value={this.state.name} onChange={this.handleInputChange}/>
+          <Input label='x axis' name='xAxis' value={this.state.xAxis} onChange={this.handleInputChange} />
+          <Input label='y axis' name='yAxis' value={this.state.yAxis} onChange={this.handleInputChange} />
+          <Input label='Name' name='name' value={this.state.name} onChange={this.handleInputChange}/>
         </div>
 
         <div className="ActionsDiv">
           <Button onClick={onVisibilityChange}>CANCEL</Button>
-          <Button size="large" variant="outlined" onClick={() =>this.handleSaveBtn(onSubmit)}>Save</ Button>
+          <Button
+            size='large'
+            variant="outlined"
+            onClick={() =>this.handleSaveBtn(onSubmit)}
+            disabled={!this.state.xAxis || !this.state.yAxis || !this.state.name}
+          >
+            Save
+          </ Button>
         </div>
       </form>
     );
@@ -45,7 +52,9 @@ export class PointCreateForm extends Component {
       name: this.state.name,
     })
     this.setState({
-      xAxis: '', yAxis: '', name: '',
+      xAxis: '',
+      yAxis: '',
+      name: '',
     })
   }
 

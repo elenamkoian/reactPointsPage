@@ -18,7 +18,7 @@ export const Button = ({ size, variant, children, ...otherProps }) => {
 
   return (
     <button
-      type="button"
+      type='button'
       className={`Button ${btnSizeClassName} ${btnVariantClassName}`}
       {...otherProps}
     >

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Navbar } from './navbar/navbar';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs';
-import { PointList } from '../pages/points/point-list/point-list';
+import { PointsList } from '../pages/points/points-list/points-list';
 import { FiguresCanvas } from './figures-canvas/figures-canvas.js';
 import { PageDetailsContainer } from './page-details-container/page-details-container';
 import { PointCreateForm } from '../pages/points/point-create-form/point-create-form';
@@ -11,6 +11,10 @@ export class Page extends Component {
     pages: ['Points', 'Circles', 'Rectangles', 'Triangles'],
     activePage: 0,
     points: JSON.parse(localStorage.getItem('points')) ?? [],
+    circles: [
+      { center: [{ x: 1, y: 2, name: 'A' }], radius: 4 },
+      { center: [{ x: 3, y: 4, name: 'B' }], radius: 7 },
+    ],
     isFormVisible: false,
   };
 
@@ -18,6 +22,7 @@ export class Page extends Component {
     return (
       <div className="Page">
         <Navbar
+          onActivePageChange={(index) => this.handlePageChange(index)}
           pages={this.state.pages}
           active={this.state.activePage}
         />
@@ -30,7 +35,7 @@ export class Page extends Component {
         />
 
         <div className="PageContent">
-          <PointList points={this.state.points} />
+          <PointsList points={this.state.points} onDeletePoint={(index) => this.handleXIcon(index)} />
 
           <PageDetailsContainer>
             <FiguresCanvas />
@@ -44,10 +49,21 @@ export class Page extends Component {
               )
             }
           </PageDetailsContainer>
-
         </div>
+
+        {/*<>*/}
+        {/*  /!*<CirclesList circles={this.state.circles}/>*!/*/}
+        {/*</>*/}
+
       </div>
     );
+  }
+
+  handleXIcon(index) {
+    const points = this.state.points;
+    points.splice(index, 1);
+    localStorage.setItem('points', JSON.stringify(points));
+    this.setState({ points });
   }
 
   handleSubmit(point) {
@@ -59,6 +75,12 @@ export class Page extends Component {
   handleIsFormVisible() {
     this.setState({
       isFormVisible: !this.state.isFormVisible,
-    })
+    });
+  }
+
+  handlePageChange(index) {
+    this.setState({
+      activePage: index,
+    });
   }
 }

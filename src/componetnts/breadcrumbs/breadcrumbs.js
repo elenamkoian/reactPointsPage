@@ -1,29 +1,23 @@
 import { Button } from '../button/button';
 import './breadcrumbs.scss';
-import { Component } from 'react';
 
-export class Breadcrumbs extends Component {
-  render() {
-    let { pages, active, onVisibilityChange, isFormVisible } = this.props;
+export function Breadcrumbs({ pages, active, onVisibilityChange, isFormVisible }) {
+  return (
+    <div className="Breadcrumbs">
+      {
+        pages.map((figure, index) => (
+          active === index ? <Button size="small" key={index}> {figure}</Button> : ''
+        ))
+      }
+      <Button
+        size='large'
+        variant='contained'
+        onClick={onVisibilityChange}
+        disabled={isFormVisible}
+      >
+        CREATE
+      </ Button>
 
-    return (
-      <div className="Breadcrumbs">
-        {
-          pages.map((figure, index) => (
-            active === index ? <Button size="small"> {figure}</Button> : ''
-          ))
-        }
-
-        <Button
-          size="large"
-          variant="contained"
-          onClick={onVisibilityChange}
-          disabled={isFormVisible}
-        >
-          CREATE
-        </ Button>
-
-      </div>
-    );
-  }
+    </div>
+  );
 }

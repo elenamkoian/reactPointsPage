@@ -1,3 +1,5 @@
+@import "src/common-variables";
+
 .PointCreateForm {
   display: flex;
   justify-content: space-between;
@@ -14,6 +16,11 @@
 
     & > button {
       font-weight: bold;
+
+      &:hover {
+        background-color: $green;
+        color: $btn-text-green;
+      }
     }
   }
 }
