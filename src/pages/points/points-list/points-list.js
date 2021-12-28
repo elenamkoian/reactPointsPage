@@ -7,7 +7,7 @@ export const PointsList = ({ points, onDeletePoint }) => {
       {
         points.length ? (
           points.map((point, index) => (
-              <PointsListItem point={point} index={index} key={index} onDeletePoint={() => onDeletePoint(index)} />
+              <PointsListItem key={point.id} point={point} onDeletePoint={() => onDeletePoint(index)} />
             ),
           )
         ) : (

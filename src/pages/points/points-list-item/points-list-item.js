@@ -2,13 +2,11 @@ import './points-list-item.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-export const PointsListItem = ({ point, index, onDeletePoint }) => {
+export const PointsListItem = ({ point, onDeletePoint }) => {
 
   return (
-    <div className="PointsListItem"
-         key={index}
-    >
-      <span className="xIcon" onClick={() => onDeletePoint()}>
+    <div className="PointsListItem">
+      <span className="DeleteIcon" onClick={() => onDeletePoint()}>
         <FontAwesomeIcon icon={faTimes} />
       </span>
 

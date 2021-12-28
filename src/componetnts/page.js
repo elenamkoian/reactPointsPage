@@ -1,86 +1,78 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { Navbar } from './navbar/navbar';
 import { Breadcrumbs } from './breadcrumbs/breadcrumbs';
 import { PointsList } from '../pages/points/points-list/points-list';
 import { FiguresCanvas } from './figures-canvas/figures-canvas.js';
 import { PageDetailsContainer } from './page-details-container/page-details-container';
 import { PointCreateForm } from '../pages/points/point-create-form/point-create-form';
+import { genUId } from '../utils/gen-u-id';
 
-export class Page extends Component {
-  state = {
-    pages: ['Points', 'Circles', 'Rectangles', 'Triangles'],
-    activePage: 0,
-    points: JSON.parse(localStorage.getItem('points')) ?? [],
-    circles: [
-      { center: [{ x: 1, y: 2, name: 'A' }], radius: 4 },
-      { center: [{ x: 3, y: 4, name: 'B' }], radius: 7 },
-    ],
-    isFormVisible: false,
+export const Page = () => {
+  const pages = ['Points', 'Circles', 'Rectangles', 'Triangles'];
+  const [activePage, setActivePage] = useState(0);
+  const [points, setPoints] = useState(() => {
+    return JSON.parse(localStorage.getItem('points')) ?? [];
+  });
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const handleXIcon = (index) => {
+    const newPoints = [...points];
+    newPoints.splice(index, 1);
+    localStorage.setItem('points', JSON.stringify(newPoints));
+    setPoints(newPoints);
   };
 
-  render() {
-    return (
-      <div className="Page">
-        <Navbar
-          onActivePageChange={(index) => this.handlePageChange(index)}
-          pages={this.state.pages}
-          active={this.state.activePage}
-        />
+  const handleSubmit = (point) => {
+    const newPoint = { ...point, id: genUId() };
+    const newPoints = [...points, newPoint];
+    localStorage.setItem('points', JSON.stringify(newPoints));
+    setPoints(newPoints);
+  };
 
-        <Breadcrumbs
-          isFormVisible={this.state.isFormVisible}
-          onVisibilityChange={() => this.handleIsFormVisible()}
-          pages={this.state.pages}
-          active={this.state.activePage}
-        />
+  const handleIsFormVisible = () => {
+    setIsFormVisible(!isFormVisible);
+  };
 
-        <div className="PageContent">
-          <PointsList points={this.state.points} onDeletePoint={(index) => this.handleXIcon(index)} />
+  const handlePageChange = (index) => {
+    setActivePage(index);
+  };
 
-          <PageDetailsContainer>
-            <FiguresCanvas />
-            {
-              this.state.isFormVisible && (
-                <PointCreateForm
-                  onSubmit={(point) => this.handleSubmit(point)}
-                  isFormVisible={this.state.isFormVisible}
-                  onVisibilityChange={() => this.handleIsFormVisible()}
-                />
-              )
-            }
-          </PageDetailsContainer>
-        </div>
+  return (
+    <div className="Page">
+      <Navbar
+        onActivePageChange={(index) => handlePageChange(index)}
+        pages={pages}
+        active={activePage}
+      />
 
-        {/*<>*/}
-        {/*  /!*<CirclesList circles={this.state.circles}/>*!/*/}
-        {/*</>*/}
+      <Breadcrumbs
+        isFormVisible={isFormVisible}
+        onVisibilityChange={() => handleIsFormVisible()}
+        pages={pages}
+        active={activePage}
+      />
 
+      <div className="PageContent">
+        <PointsList points={points} onDeletePoint={(index) => handleXIcon(index)} />
+
+        <PageDetailsContainer>
+          <FiguresCanvas />
+          {
+            isFormVisible && (
+              <PointCreateForm
+                onSubmit={(point) => handleSubmit(point)}
+                isFormVisible={isFormVisible}
+                onVisibilityChange={() => handleIsFormVisible()}
+              />
+            )
+          }
+        </PageDetailsContainer>
       </div>
-    );
-  }
 
-  handleXIcon(index) {
-    const points = this.state.points;
-    points.splice(index, 1);
-    localStorage.setItem('points', JSON.stringify(points));
-    this.setState({ points });
-  }
+      {/*<>*/}
+      {/*  /!*<CirclesList circles={this.state.circles}/>*!/*/}
+      {/*</>*/}
 
-  handleSubmit(point) {
-    const points = [...this.state.points, point];
-    this.setState({ points });
-    localStorage.setItem('points', JSON.stringify(points));
-  }
-
-  handleIsFormVisible() {
-    this.setState({
-      isFormVisible: !this.state.isFormVisible,
-    });
-  }
-
-  handlePageChange(index) {
-    this.setState({
-      activePage: index,
-    });
-  }
-}
+    </div>
+  );
+};
