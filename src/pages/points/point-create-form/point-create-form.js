@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { Input } from '../../../componetnts/input/input';
 import { Button } from '../../../componetnts/button/button';
 import './point-create-form.scss';
@@ -9,46 +9,38 @@ const DEFAULT_VALUES = {
   name: '',
 };
 
-export class PointCreateForm extends Component {
-  state = { ...DEFAULT_VALUES };
+export const PointCreateForm = ({ onVisibilityChange, onSubmit }) => {
+  const [defaultValues, setDefaultValue] = useState(DEFAULT_VALUES);
 
-  render() {
-    const { onVisibilityChange } = this.props;
-
-    return (
-      <form className="PointCreateForm">
-        <div className="InputsDiv">
-          <Input label="x axis" name="x" value={this.state.x} onChange={this.handleInputChange} />
-          <Input label="y axis" name="y" value={this.state.y} onChange={this.handleInputChange} />
-          <Input label="Name" name="name" value={this.state.name} onChange={this.handleInputChange} />
-        </div>
-
-        <div className="ActionsDiv">
-          <Button onClick={onVisibilityChange}>CANCEL</Button>
-          <Button
-            size="large"
-            variant="outlined"
-            onClick={() => this.handleSaveBtn()}
-            disabled={!this.state.x || !this.state.y || !this.state.name}
-          >
-            Save
-          </ Button>
-        </div>
-      </form>
-    );
-  }
-
-  handleInputChange = (ev) => {
-    const axisName = ev.target.name;
-    const value = ev.target.value;
-    this.setState({
-      [axisName]: value,
-    });
+  const handleInputChange = (ev) => {
+    const { name, value } = ev.target;
+    setDefaultValue({ ...defaultValues, [name]: value });
   };
 
-  handleSaveBtn = () => {
-    this.props.onSubmit(this.state);
-    this.setState({ ...DEFAULT_VALUES });
+  const handleSaveBtn = () => {
+    onSubmit(defaultValues);
+    setDefaultValue(DEFAULT_VALUES);
   };
 
-}
+  return (
+    <form className="PointCreateForm">
+      <div className="InputsDiv">
+        <Input label="x axis" name="x" value={defaultValues.x} onChange={handleInputChange} />
+        <Input label="y axis" name="y" value={defaultValues.y} onChange={handleInputChange} />
+        <Input label="Name" name="name" value={defaultValues.name} onChange={handleInputChange} />
+      </div>
+
+      <div className="ActionsDiv">
+        <Button onClick={onVisibilityChange}>CANCEL</Button>
+        <Button
+          size="large"
+          variant="outlined"
+          onClick={() => handleSaveBtn()}
+          disabled={!defaultValues.x || !defaultValues.y || !defaultValues.name}
+        >
+          Save
+        </ Button>
+      </div>
+    </form>
+  );
+};
