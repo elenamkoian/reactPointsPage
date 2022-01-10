@@ -4,6 +4,7 @@ import { Button } from '../../../componetnts/button/button';
 import './point-create-form.scss';
 import { useDispatch } from 'react-redux';
 import { pointsSlice } from '../../../store/slices/points.slice';
+import { Link } from 'react-router-dom';
 
 const DEFAULT_VALUES = {
   x: '',
@@ -38,7 +39,7 @@ export const PointCreateForm = ({ onVisibilityChange }) => {
       </div>
 
       <div className="ActionsDiv">
-        <Button onClick={onVisibilityChange}>CANCEL</Button>
+        <Link to="..">CANCEL</Link>
         <Button
           size="large"
           variant="outlined"

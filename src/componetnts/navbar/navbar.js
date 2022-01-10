@@ -1,8 +1,11 @@
 import { Logo } from '../logo/logo';
 import { Button } from '../button/button';
 import './navbar.scss';
+import clsx from 'clsx';
 
-export const Navbar = ({ pages, active, onActivePageChange }) => {
+export const Navbar = ({ active, onActivePageChange }) => {
+  const pages = ['Points', 'Circles', 'Rectangles', 'Triangles'];
+
   return (
     <div className="Navbar">
       <div className="LogoWithTitle">
@@ -17,6 +20,7 @@ export const Navbar = ({ pages, active, onActivePageChange }) => {
               onClick={() => onActivePageChange(index)}
               key={index}
               className={`Button ${index === active ? 'Active' : ''}`}
+              // className={({ isActive }) => clsx('Button', { 'Active': isActive })}
               size="small"
               variant="outlined"
             >

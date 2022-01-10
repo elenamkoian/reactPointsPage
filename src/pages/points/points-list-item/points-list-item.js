@@ -13,7 +13,8 @@ export const PointsListItem = ({ point }) => {
 
   return (
     <div className="PointsListItem">
-      <span className="DeleteIcon" onClick={() => handleDeletePoint()}>
+      <span className="DeleteIcon"
+            onClick={() => handleDeletePoint()}>
         <FontAwesomeIcon icon={faTimes} />
       </span>
 
