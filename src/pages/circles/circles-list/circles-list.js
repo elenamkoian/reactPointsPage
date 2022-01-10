@@ -1,5 +1,4 @@
 import { CirclesListItem } from '../circles-list-item/circles-list-item';
-import { CirclesListItem } from '../../points/points-list-item/points-list-item';
 
 export const CirclesList = ({ circles }) => {
   return (

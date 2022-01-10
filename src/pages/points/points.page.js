@@ -10,6 +10,10 @@ import { Outlet } from 'react-router-dom';
 export const PointsPage = () => {
   const points = useSelector(pointsSlice.selectors.selectAll);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  // const circles = [
+  //   { center: [{ x: 1, y: 2, name: 'A' }], radius: 4, id: genUid() },
+  //   { center: [{ x: 3, y: 4, name: 'B' }], radius: 7, id: genUid() },
+  // ]
 
   const handleIsFormVisible = () => {
     setIsFormVisible(!isFormVisible);

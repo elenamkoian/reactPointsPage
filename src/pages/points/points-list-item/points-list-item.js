@@ -13,7 +13,7 @@ export const PointsListItem = ({ point }) => {
 
   return (
     <div className="PointsListItem">
-      <span className="DeleteIcon"
+      <span className="DeletePoint"
             onClick={() => handleDeletePoint()}>
         <FontAwesomeIcon icon={faTimes} />
       </span>
@@ -22,5 +22,4 @@ export const PointsListItem = ({ point }) => {
       <span>Coordinate (x: {point.x}, y: {point.y})</span>
     </div>
   );
-
 };

@@ -10,11 +10,10 @@ const slice = createSlice({
   name: 'circles',
   initialState: getInitialState(),
   reducers: {
-    increment: (state) => {
+    deleteCircle: (state, { payload: id }) => {
+      state.allCircles = state.allCircles.filter((circle) => circle.id !== id )
     },
-    decrement: (state) => {
-    },
-    incrementByAmount: (state) => {
+    createCircle: (state, { payload }) => {
     },
   },
 });
