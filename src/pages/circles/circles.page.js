@@ -3,14 +3,17 @@ import { PageDetailsContainer } from '../../componetnts/page-details-container/p
 import { FiguresCanvas } from '../../componetnts/figures-canvas/figures-canvas';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import genUid from 'light-uid';
 import { CirclesList } from './circles-list/circles-list';
+import { useSelector } from 'react-redux';
+import { circlesSlice } from '../../store/slices/circles.slice';
+import genUid from 'light-uid';
 
 export const CirclesPage = () => {
-  const circles = [
-    { center: [{ x: 1, y: 2, name: 'A' }], radius: 4, id: genUid() },
-    { center: [{ x: 3, y: 4, name: 'B' }], radius: 7, id: genUid() },
-  ]
+  // const circles = [
+  //   { center: { x: 1, y: 2, name: 'A' }, radius: 4, id: genUid() },
+  //   { center: { x: 3, y: 4, name: 'B' }, radius: 7, id: genUid() },
+  // ]
+  const circles = useSelector(circlesSlice.selectors.selectAll);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const handleIsFormVisible = () => {
     setIsFormVisible(!isFormVisible);
@@ -36,5 +39,5 @@ export const CirclesPage = () => {
       </div>
 
     </>
-  )
-}
+  );
+};

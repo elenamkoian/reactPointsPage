@@ -2,7 +2,7 @@
 
 .CirclesListItem {
   color: rgba(203, 203, 209, 1);
-  height: 20px;
+  height: auto;
   border-radius: 10px;
   padding: 16px;
   border: 1px solid $border-blue;
@@ -10,17 +10,17 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 14px;
   position: relative;
 
   .DeleteCircle {
-    position: absolute;
     top: 2px;
     right: 1px;
     padding: 4px 6px;
     cursor: pointer;
     border-radius: 4px;
     font-size: 10px;
+    position: absolute;
   }
 
   .Avatar {
@@ -29,13 +29,29 @@
     justify-content: center;
     border-radius: 50%;
     border: 1px solid $green;
-    height: 26px;
-    width: 26px;
+    height: 32px;
+    width: 32px;
   }
 
-  .CircleDetails {
+  .CirclesListItemContent {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 8px;
+
+    .CirclesListItemTopContent {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .CirclesListItemBottomContent {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-left: 40px;
+     }
   }
 }
+
+

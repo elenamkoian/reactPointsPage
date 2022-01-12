@@ -12,7 +12,18 @@
 
   .ActionsDiv {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 40px;
+
+    .CancelBtn {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        color: lightgrey;
+      }
+    }
 
     & > button {
       font-weight: bold;

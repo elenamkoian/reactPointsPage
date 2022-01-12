@@ -17,6 +17,7 @@ export const PointCreateForm = ({ onVisibilityChange }) => {
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 
   const handleCreate = (point) => {
+    console.log(point);
     dispatch(pointsSlice.actions.createPoint(point));
   };
 
@@ -39,7 +40,7 @@ export const PointCreateForm = ({ onVisibilityChange }) => {
       </div>
 
       <div className="ActionsDiv">
-        <Link to="..">CANCEL</Link>
+        <Link to=".." className="CancelBtn" >CANCEL</Link>
         <Button
           size="large"
           variant="outlined"

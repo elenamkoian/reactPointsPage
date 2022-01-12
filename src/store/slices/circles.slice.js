@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import genUid from 'light-uid';
 
 const getInitialState = () => {
   return {
@@ -11,16 +12,17 @@ const slice = createSlice({
   initialState: getInitialState(),
   reducers: {
     deleteCircle: (state, { payload: id }) => {
-      state.allCircles = state.allCircles.filter((circle) => circle.id !== id )
+      state.allCircles = state.allCircles.filter((circle) => circle.id !== id);
     },
     createCircle: (state, { payload }) => {
+      state.allCircles.push({ id: genUid(), ...payload });
     },
   },
 });
 
 const selectors = {
-  selectAll: (state) => state.circles.allCircles
-}
+  selectAll: (state) => state.circles.allCircles,
+};
 
 export const circlesSlice = {
   ...slice,

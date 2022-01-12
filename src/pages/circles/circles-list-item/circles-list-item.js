@@ -18,17 +18,27 @@ export const CirclesListItem = ({ circle }) => {
         <FontAwesomeIcon icon={faTimes} />
       </span>
 
-      <div className="Avatar">{circle.center.name}</div>
-      <div className="CircleDetails">
-        <span>Center (x: {circle.center.x}, y: {circle.center.y})</span>
-        <span>Radius ({circle.radius})</span>
+      <div className="CirclesListItemContent">
+        <div className="CirclesListItemTopContent">
+          <div className="Avatar">{circle.center.name}</div>
+          <span>Centered circle</span>
+        </div>
+        <div className="CirclesListItemBottomContent">
+          <span>Center coordinate ( x: {circle.center.x}, y: {circle.center.y} )</span>
+          <span>Radius ( {circle.radius} )</span>
+        </div>
       </div>
     </div>
   )
 }
 
-
 // [
-//   { center: [{ x: 1, y: 2, name: 'A' }], radius: 4 },
-//   { center: [{ x: 3, y: 4, name: 'B' }], radius: 7 },
+//   {
+//      center: { x: 1, y: 2, name: 'A' },
+//      radius: 4
+//   },
+//   {
+//      center: { x: 3, y: 4, name: 'B' },
+//      radius: 7
+//    },
 // ],

@@ -1,4 +1,5 @@
 import { CirclesListItem } from '../circles-list-item/circles-list-item';
+import './circles-list.scss';
 
 export const CirclesList = ({ circles }) => {
   return (
@@ -8,7 +9,8 @@ export const CirclesList = ({ circles }) => {
           circles.map((circle) => (
               <CirclesListItem
                 circle={circle}
-                key={circle.id} />
+                key={circle.id}
+              />
             ),
           )
         ) : (
