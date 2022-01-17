@@ -1,25 +1,27 @@
 import { useState } from 'react';
-import { Input } from '../../../componetnts/input/input';
-import { Button } from '../../../componetnts/button/button';
 import './circle-create-form.scss';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { circlesSlice } from '../../../store/slices/circles.slice';
+import { pointsSlice } from '../../../store/slices/points.slice';
+import { Input } from '../../../componetnts/input/input';
+import { Link } from 'react-router-dom';
+import { Button } from '../../../componetnts/button/button';
+import { MenuItem, TextField } from '@mui/material';
 
 const DEFAULT_VALUES = {
-  center: {
-    x: '',
-    y: '',
-    name: '',
-  },
+  center: null,
+  centerId: '',
   radius: '',
 };
 
 export const CircleCreateForm = () => {
   const dispatch = useDispatch();
+  const points = useSelector(pointsSlice.selectors.selectAll);
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 
   const handleCreate = (circle) => {
+    const point = points.find((point) => point.id === circle.centerId);
+    circle.center = point;
     dispatch(circlesSlice.actions.createCircle(circle));
   };
 
@@ -28,24 +30,36 @@ export const CircleCreateForm = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleCenterCoordinateChange = (ev) => {
-    const { value, name } = ev.target;
-    const { center } = formValues;
-    center[name] = value;
-    setFormValues({ ...formValues, center });
-  };
-
   const handleSaveBtn = () => {
     handleCreate(formValues);
     setFormValues(DEFAULT_VALUES);
   };
 
+  const handleSelect = (ev) => {
+    setFormValues({...formValues, centerId: ev.target.value})
+  };
+
   return (
     <form className="CircleCreateForm">
       <div className="InputsDiv">
-        <Input label="x axis" name="x" value={formValues.center.x} onChange={handleCenterCoordinateChange} />
-        <Input label="y axis" name="y" value={formValues.center.y} onChange={handleCenterCoordinateChange} />
-        <Input label="Name" name="name" value={formValues.center.name} onChange={handleCenterCoordinateChange} />
+        <TextField
+          select
+          label="center"
+          value={formValues.centerId}
+          onChange={handleSelect}
+          // helperText="Please select center from points"
+        >
+          {
+            points.map((point) => (
+              <MenuItem
+                key={point.id}
+                value={point.id}
+              >
+                coordinate (x: {point.x}, y: {point.y}
+              </MenuItem>
+            ))
+          }
+        </TextField>
         <Input label="Radius" name="radius" value={formValues.radius} onChange={handleInputChange} />
       </div>
 
@@ -55,10 +69,10 @@ export const CircleCreateForm = () => {
           size="large"
           variant="outlined"
           onClick={() => handleSaveBtn()}
-          disabled={!formValues.center.x || !formValues.center.y || !formValues.center.name || !formValues.radius}
+          // disabled={!formValues.center.x || !formValues.center.y || !formValues.center.name || !formValues.radius}
         >
           Save
-        </ Button>
+        </Button>
       </div>
     </form>
   );

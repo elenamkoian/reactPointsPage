@@ -2,8 +2,9 @@ import { Logo } from '../logo/logo';
 import { Button } from '../button/button';
 import './navbar.scss';
 import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
 
-export const Navbar = ({ active, onActivePageChange }) => {
+export const Navbar = ( ) => {
   const pages = ['Points', 'Circles', 'Rectangles', 'Triangles'];
 
   return (
@@ -16,16 +17,13 @@ export const Navbar = ({ active, onActivePageChange }) => {
       <div className="ButtonList">
         {
           pages.map((figure, index) => (
-            <Button
-              onClick={() => onActivePageChange(index)}
+            <NavLink
               key={index}
-              className={`Button ${index === active ? 'Active' : ''}`}
-              // className={({ isActive }) => clsx('Button', { 'Active': isActive })}
-              size="small"
-              variant="outlined"
+              className={({ isActive }) => clsx('Button', { 'Active': isActive })}
+              to={figure.toLocaleLowerCase()}
             >
               {figure}
-            </Button>
+            </NavLink>
           ))
         }
       </div>

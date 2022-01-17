@@ -6,8 +6,9 @@
   color: $grey;
   border-radius: 4px;
   padding: 6px 12px;
-  height: 36px;
-  line-height: 24px;
+  height: 32px;
+  line-height: 20px;
+  text-decoration: none;
 
   &:not(:disabled) {
     cursor: pointer;
@@ -31,7 +32,7 @@
 
   &.Outlined {
     border-radius: 12px;
-    border: 2px solid $green;
+    border: 1px solid $green;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
     color: rgba(203, 203, 209, 1);
     text-transform: uppercase;

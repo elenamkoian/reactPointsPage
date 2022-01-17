@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { pointsSlice } from '../../store/slices/points.slice';
 import { Breadcrumbs } from '../../componetnts/breadcrumbs/breadcrumbs';
@@ -9,23 +8,9 @@ import { Outlet } from 'react-router-dom';
 
 export const PointsPage = () => {
   const points = useSelector(pointsSlice.selectors.selectAll);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  // const circles = [
-  //   { center: [{ x: 1, y: 2, name: 'A' }], radius: 4, id: genUid() },
-  //   { center: [{ x: 3, y: 4, name: 'B' }], radius: 7, id: genUid() },
-  // ]
-
-  const handleIsFormVisible = () => {
-    setIsFormVisible(!isFormVisible);
-  };
-
   return (
     <>
-      <Breadcrumbs
-        isFormVisible={isFormVisible}
-        onVisibilityChange={() => handleIsFormVisible()}
-        active={0}
-      />
+      <Breadcrumbs active={0} />
 
       <div className="PageContent">
         <PointsList points={points} />
@@ -35,16 +20,17 @@ export const PointsPage = () => {
 
           <Outlet />
 
-          {/*{*/}
-          {/*  isFormVisible && (*/}
-          {/*    <PointCreateForm*/}
-          {/*      isFormVisible={isFormVisible}*/}
-          {/*      onVisibilityChange={() => handleIsFormVisible()}*/}
-          {/*    />*/}
-          {/*  )*/}
-          {/*}*/}
         </PageDetailsContainer>
       </div>
     </>
   );
 };
+
+{/*{*/}
+{/*  isFormVisible && (*/}
+{/*    <PointCreateForm*/}
+{/*      isFormVisible={isFormVisible}*/}
+{/*      onVisibilityChange={() => handleIsFormVisible()}*/}
+{/*    />*/}
+{/*  )*/}
+{/*}*/}

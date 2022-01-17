@@ -2,7 +2,7 @@ import { Button } from '../button/button';
 import './breadcrumbs.scss';
 import { Link } from 'react-router-dom';
 
-export const Breadcrumbs = ({ active, onVisibilityChange, isFormVisible }) => {
+export const Breadcrumbs = ({ active, isFormVisible }) => {
   const pages = ['Points', 'Circles', 'Rectangles', 'Triangles'];
 
   return (
@@ -17,8 +17,6 @@ export const Breadcrumbs = ({ active, onVisibilityChange, isFormVisible }) => {
         to="create"
         size="large"
         variant="contained"
-        onClick={onVisibilityChange}
-        disabled={isFormVisible}
         className="CreateBtn"
       >
         CREATE

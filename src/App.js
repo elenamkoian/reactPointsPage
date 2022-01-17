@@ -21,15 +21,6 @@ export class App extends Component {
             </Route>
           </Route>
         </Routes>
-
-        {/*<Routes>*/}
-        {/*  <Route path="/" element={<PageShell />}>*/}
-        {/*    <Route path="circles" element={<CirclesPage />}>*/}
-        {/*      <Route path="create" element={<PointCreateForm />} />*/}
-        {/*    </Route>*/}
-        {/*  </Route>*/}
-        {/*</Routes>*/}
-
       </div>
     );
   }

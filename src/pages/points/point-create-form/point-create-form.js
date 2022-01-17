@@ -12,12 +12,11 @@ const DEFAULT_VALUES = {
   name: '',
 };
 
-export const PointCreateForm = ({ onVisibilityChange }) => {
+export const PointCreateForm = () => {
   const dispatch = useDispatch();
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 
   const handleCreate = (point) => {
-    console.log(point);
     dispatch(pointsSlice.actions.createPoint(point));
   };
 
