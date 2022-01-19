@@ -1,27 +1,30 @@
 import { Button } from '../button/button';
-import './breadcrumbs.scss';
+import * as classes from './breadcrumbs.module.scss';
 import { Link } from 'react-router-dom';
+import PatchStyles from 'patch-styles';
 
-export const Breadcrumbs = ({ active, isFormVisible }) => {
+export const Breadcrumbs = ({ active }) => {
   const pages = ['Points', 'Circles', 'Rectangles', 'Triangles'];
 
   return (
-    <div className="Breadcrumbs">
-      {
-        pages.map((figure, index) => (
-          active === index ? <Button size="small" key={index}> {figure}</Button> : ''
-        ))
-      }
+    <PatchStyles classNames={classes}>
+      <div className="Breadcrumbs">
+        {
+          pages.map((figure, index) => (
+            active === index ? <Button size="small" key={index}> {figure}</Button> : ''
+          ))
+        }
 
-      <Link
-        to="create"
-        size="large"
-        variant="contained"
-        className="CreateBtn"
-      >
-        CREATE
-      </Link>
+        <Link
+          to="create"
+          size="large"
+          variant="contained"
+          className="CreateBtn"
+        >
+          CREATE
+        </Link>
 
-    </div>
+      </div>
+    </PatchStyles>
   );
 };

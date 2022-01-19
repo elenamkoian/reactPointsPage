@@ -1,7 +1,10 @@
-import './page-details-container.scss';
+import * as classes from './page-details-container.module.scss';
+import PatchStyles from 'patch-styles';
 
 export const PageDetailsContainer = ({ children }) => {
   return (
-    <div className="PageDetailsContainer">{children}</div>
+    <PatchStyles classNames={classes}>
+      <div className="PageDetailsContainer">{children}</div>
+    </PatchStyles>
   );
 };

@@ -1,0 +1,61 @@
+@import "src/common-variables";
+
+.TrianglesListItem {
+  color: $white;
+  height: auto;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid $border-blue;
+  background: $board-item-blue;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  position: relative;
+
+  .DeleteTriangle {
+    position: absolute;
+    top: 2px;
+    right: 1px;
+    padding: 4px 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 10px;
+  }
+
+  .Avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $green;
+    height: 32px;
+    width: 32px;
+  }
+
+  .TrianglesListItemContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+
+    .TrianglesListItemTopContent {
+      display: flex;
+      gap: 8px;
+      font-size: 16px;
+    }
+
+    .TrianglesListItemBottomContent{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .Vertices {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+}

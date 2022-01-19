@@ -1,9 +1,12 @@
-import './figures-canvas.scss';
+import * as classes from './figures-canvas.module.scss';
+import PatchStyles from 'patch-styles';
 
 export const FiguresCanvas = () => {
   return (
-    <div className="FiguresCanvas">
-      {/*<canvas />*/}
-    </div>
+    <PatchStyles classNames={classes}>
+      <div className="FiguresCanvas">
+        {/*<canvas />*/}
+      </div>
+    </PatchStyles>
   );
 };

@@ -1,23 +1,26 @@
 import { CirclesListItem } from '../circles-list-item/circles-list-item';
-import './circles-list.scss';
+import * as classes from './circles-list.module.scss';
+import PatchStyles from 'patch-styles';
 
 export const CirclesList = ({ circles }) => {
   return (
-    <div className="CirclesList">
-      {
-        circles.length ? (
-          circles.map((circle) => (
-              <CirclesListItem
-                circle={circle}
-                key={circle.id}
-              />
-            ),
+    <PatchStyles classNames={classes}>
+      <div className="CirclesList">
+        {
+          circles.length ? (
+            circles.map((circle) => (
+                <CirclesListItem
+                  circle={circle}
+                  key={circle.id}
+                />
+              ),
+            )
+          ) : (
+            <span>no <b>circles</b> yet</span>
           )
-        ) : (
-          <span>No circles yet</span>
-        )
-      }
-    </div>
+        }
+      </div>
+    </PatchStyles>
   );
 };
 

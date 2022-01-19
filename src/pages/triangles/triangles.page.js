@@ -2,27 +2,30 @@ import { Breadcrumbs } from '../../componetnts/breadcrumbs/breadcrumbs';
 import { FiguresCanvas } from '../../componetnts/figures-canvas/figures-canvas';
 import { PageDetailsContainer } from '../../componetnts/page-details-container/page-details-container';
 import { Outlet } from 'react-router-dom';
-import genUid from 'light-uid';
+import { TrianglesList } from './triangles-list/triangles-list';
+import { useSelector } from 'react-redux';
+import { trianglesSlice } from '../../store/slices/triangles.slice';
 
 export const TrianglesPage = () => {
-  const triangles = [
-    {
-      vertices: {
-        vertex1: { x: 1, y: 2, name: 'A'},
-        vertex2: { x: 1, y: 2, name: 'B'},
-        vertex3: { x: 1, y: 2, name: 'C'},
-      },
-      name: 'ABC',
-      id: genUid()
-    },
-  ]
+  const triangles = useSelector(trianglesSlice.selectors.selectAll);
+  // const triangles = [
+  //   {
+  //     vertices: [
+  //       {vertex: { x: 1, y: 2, name: 'A' }},
+  //       {vertex: { x: 3, y: 4, name: 'B' }},
+  //       {vertex: { x: 5, y: 6, name: 'C' }},
+  //     ],
+  //     name: 'ABC',
+  //     id: genUid(),
+  //   },
+  // ];
 
   return (
     <>
       <Breadcrumbs active={2} />
 
       <div className="PageContent">
-        {/*<PointsList points={points} />*/}
+        <TrianglesList triangles={triangles} />
 
         <PageDetailsContainer>
           <FiguresCanvas />

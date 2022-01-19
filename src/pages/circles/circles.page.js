@@ -2,11 +2,9 @@ import { Breadcrumbs } from '../../componetnts/breadcrumbs/breadcrumbs';
 import { PageDetailsContainer } from '../../componetnts/page-details-container/page-details-container';
 import { FiguresCanvas } from '../../componetnts/figures-canvas/figures-canvas';
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
 import { CirclesList } from './circles-list/circles-list';
 import { useSelector } from 'react-redux';
 import { circlesSlice } from '../../store/slices/circles.slice';
-import genUid from 'light-uid';
 
 export const CirclesPage = () => {
   // const circles = [
@@ -14,18 +12,10 @@ export const CirclesPage = () => {
   //   { center: { x: 3, y: 4, name: 'B' }, radius: 7, id: genUid() },
   // ]
   const circles = useSelector(circlesSlice.selectors.selectAll);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const handleIsFormVisible = () => {
-    setIsFormVisible(!isFormVisible);
-  };
 
   return (
     <>
-      <Breadcrumbs
-        isFormVisible={isFormVisible}
-        onVisibilityChange={() => handleIsFormVisible()}
-        active={1}
-      />
+      <Breadcrumbs active={1} />
 
       <div className="PageContent">
         <CirclesList circles={circles} />

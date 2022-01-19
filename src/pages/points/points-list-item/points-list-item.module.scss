@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 14px;
   position: relative;
 
   .DeletePoint {
@@ -29,7 +29,7 @@
     justify-content: center;
     border-radius: 50%;
     border: 1px solid $green;
-    height: 26px;
-    width: 26px;
+    height: 32px;
+    width: 32px;
   }
 }

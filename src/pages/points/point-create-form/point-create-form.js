@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Input } from '../../../componetnts/input/input';
 import { Button } from '../../../componetnts/button/button';
-import './point-create-form.scss';
+import * as classes from './point-create-form.module.scss';
 import { useDispatch } from 'react-redux';
 import { pointsSlice } from '../../../store/slices/points.slice';
 import { Link } from 'react-router-dom';
+import PatchStyles from 'patch-styles';
 
 const DEFAULT_VALUES = {
   x: '',
@@ -31,24 +32,26 @@ export const PointCreateForm = () => {
   };
 
   return (
-    <form className="PointCreateForm">
-      <div className="InputsDiv">
-        <Input label="x axis" name="x" value={formValues.x} onChange={handleInputChange} />
-        <Input label="y axis" name="y" value={formValues.y} onChange={handleInputChange} />
-        <Input label="Name" name="name" value={formValues.name} onChange={handleInputChange} />
-      </div>
+    <PatchStyles classNames={classes}>
+      <form className="PointCreateForm">
+        <div className="InputsDiv">
+          <Input label="x axis" name="x" value={formValues.x} onChange={handleInputChange} />
+          <Input label="y axis" name="y" value={formValues.y} onChange={handleInputChange} />
+          <Input label="Name" name="name" value={formValues.name} onChange={handleInputChange} />
+        </div>
 
-      <div className="ActionsDiv">
-        <Link to=".." className="CancelBtn" >CANCEL</Link>
-        <Button
-          size="large"
-          variant="outlined"
-          onClick={() => handleSaveBtn()}
-          disabled={!formValues.x || !formValues.y || !formValues.name}
-        >
-          Save
-        </ Button>
-      </div>
-    </form>
+        <div className="ActionsDiv">
+          <Link to=".." className="CancelBtn" >CANCEL</Link>
+          <Button
+            size="large"
+            variant="outlined"
+            onClick={() => handleSaveBtn()}
+            disabled={!formValues.x || !formValues.y || !formValues.name}
+          >
+            Save
+          </ Button>
+        </div>
+      </form>
+    </PatchStyles>
   );
 };

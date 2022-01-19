@@ -1,8 +1,9 @@
-import './points-list-item.scss';
+import * as classes from './points-list-item.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { pointsSlice } from '../../../store/slices/points.slice';
+import PatchStyles from 'patch-styles';
 
 export const PointsListItem = ({ point }) => {
   const dispatch = useDispatch();
@@ -12,14 +13,16 @@ export const PointsListItem = ({ point }) => {
   };
 
   return (
-    <div className="PointsListItem">
+    <PatchStyles classNames={classes}>
+      <div className="PointsListItem">
       <span className="DeletePoint"
             onClick={() => handleDeletePoint()}>
         <FontAwesomeIcon icon={faTimes} />
       </span>
 
-      <div className="Avatar">{point.name}</div>
-      <span>Coordinate (x: {point.x}, y: {point.y})</span>
-    </div>
+        <div className="Avatar">{point.name}</div>
+        <span>Coordinate (x: {point.x}, y: {point.y})</span>
+      </div>
+    </PatchStyles>
   );
 };

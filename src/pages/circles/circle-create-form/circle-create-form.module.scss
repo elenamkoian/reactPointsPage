@@ -8,6 +8,7 @@
   .InputsDiv {
     display: flex;
     gap: 16px;
+    height: 55px;
   }
 
   .ActionsDiv {
@@ -34,4 +35,8 @@
       }
     }
   }
+}
+
+.MuiSelect-select {
+  color: $green !important;
 }

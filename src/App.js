@@ -6,6 +6,8 @@ import { PointsPage } from './pages/points/points.page';
 import { PointCreateForm } from './pages/points/point-create-form/point-create-form';
 import { CirclesPage } from './pages/circles/circles.page';
 import { CircleCreateForm } from './pages/circles/circle-create-form/circle-create-form';
+import { TrianglesPage } from './pages/triangles/triangles.page';
+import { TriangleCreateForm } from './pages/triangles/triangle-create-form/triangle-create-form';
 
 export class App extends Component {
   render() {
@@ -18,6 +20,9 @@ export class App extends Component {
             </Route>
             <Route path="circles" element={<CirclesPage />}>
               <Route path="create" element={<CircleCreateForm />} />
+            </Route>
+            <Route path="triangles" element={<TrianglesPage />}>
+              <Route path="create" element={<TriangleCreateForm />} />
             </Route>
           </Route>
         </Routes>

@@ -1,25 +1,24 @@
 import { Logo } from '../logo/logo';
-import { Button } from '../button/button';
-import './navbar.scss';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
+import * as classes from './navbar.module.scss'
 
-export const Navbar = ( ) => {
-  const pages = ['Points', 'Circles', 'Rectangles', 'Triangles'];
+export const Navbar = () => {
+  const pages = ['Points', 'Circles', 'Triangles', 'Rectangles'];
 
   return (
-    <div className="Navbar">
-      <div className="LogoWithTitle">
+    <div className={classes.Navbar}>
+      <div className={classes.LogoWithTitle}>
         <Logo />
-        <span className="PageTitle">Figures</span>
+        <span className={classes.PageTitle}>Figures</span>
       </div>
 
-      <div className="ButtonList">
+      <div className={classes.ButtonList}>
         {
           pages.map((figure, index) => (
             <NavLink
               key={index}
-              className={({ isActive }) => clsx('Button', { 'Active': isActive })}
+              className={({ isActive }) => clsx(classes.Button, { [classes.Active]: isActive })}
               to={figure.toLocaleLowerCase()}
             >
               {figure}
