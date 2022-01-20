@@ -8,17 +8,6 @@ import { trianglesSlice } from '../../store/slices/triangles.slice';
 
 export const TrianglesPage = () => {
   const triangles = useSelector(trianglesSlice.selectors.selectAll);
-  // const triangles = [
-  //   {
-  //     vertices: [
-  //       {vertex: { x: 1, y: 2, name: 'A' }},
-  //       {vertex: { x: 3, y: 4, name: 'B' }},
-  //       {vertex: { x: 5, y: 6, name: 'C' }},
-  //     ],
-  //     name: 'ABC',
-  //     id: genUid(),
-  //   },
-  // ];
 
   return (
     <>

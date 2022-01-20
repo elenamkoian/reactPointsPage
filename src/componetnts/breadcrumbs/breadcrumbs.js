@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PatchStyles from 'patch-styles';
 
 export const Breadcrumbs = ({ active }) => {
-  const pages = ['Points', 'Circles', 'Rectangles', 'Triangles'];
+  const pages = ['Points', 'Circles', 'Triangles', 'Rectangles'];
 
   return (
     <PatchStyles classNames={classes}>

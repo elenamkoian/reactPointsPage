@@ -3,7 +3,7 @@ import genUid from 'light-uid';
 
 const getInitialState = () => {
   return {
-    allRectangles: JSON.parse(localStorage.getItem('points')) ?? [],
+    allRectangles: JSON.parse(localStorage.getItem('rectangles')) ?? [],
   };
 };
 

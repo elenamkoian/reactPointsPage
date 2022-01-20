@@ -48,7 +48,6 @@ export const CircleCreateForm = () => {
             label="center"
             value={formValues.centerId}
             onChange={handleSelect}
-            helperText="Select circle center"
             error={!formValues.centerId.length}
             fullWidth
           >
