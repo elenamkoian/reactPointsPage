@@ -1,11 +1,39 @@
 import { useState } from 'react';
 import { Input } from '../../../componetnts/input/input';
 import { Button } from '../../../componetnts/button/button';
-import * as classes from './point-create-form.module.scss';
 import { useDispatch } from 'react-redux';
 import { pointsSlice } from '../../../store/slices/points.slice';
 import { Link } from 'react-router-dom';
 import PatchStyles from 'patch-styles';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+    PointCreateForm: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    InputsDiv: {
+      display: 'flex',
+      gap: theme.spacing(2),
+      height: theme.spacing(7),
+    },
+    ActionsDiv: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      gap: theme.spacing(5),
+    },
+    CancelBtn: {
+      color: 'white',
+      textDecoration: 'none',
+
+      '&:hover': {
+        color: 'lightgrey',
+      },
+    },
+  }
+));
+
 
 const DEFAULT_VALUES = {
   x: '',
@@ -14,6 +42,7 @@ const DEFAULT_VALUES = {
 };
 
 export const PointCreateForm = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 

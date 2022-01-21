@@ -1,35 +1,27 @@
 @import "src/common-variables";
 
-.Breadcrumbs {
-  height: 44px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: $page-padding;
+//.Breadcrumbs {
+//  height: 44px;
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//  padding: $page-padding;
+//
+//  .CreateBtn {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    text-decoration: none;
+//    font-weight: bold;
+//    width: 142px;
+//    height: 44px;
+//    border-radius: 10px;
+//    background-image: $green-gradient;
+//    border: none;
+//    font-size: 12px;
+//    cursor: pointer;
+//    color: $btn-text-green;
+//    box-shadow: $box-shadow;
+//  }
 
-  span {
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-    color: rgba(208, 207, 213, 1);
-    letter-spacing: 1px;
-  }
-
-  .CreateBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-weight: bold;
-    width: 142px;
-    height: 44px;
-    border-radius: 10px;
-    background-image: $green-gradient;
-    border: none;
-    font-size: 12px;
-    cursor: pointer;
-    color: $btn-text-green;
-    box-shadow: $box-shadow;
-  }
-
-}
+//}

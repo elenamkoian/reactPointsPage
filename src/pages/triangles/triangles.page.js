@@ -5,24 +5,39 @@ import { Outlet } from 'react-router-dom';
 import { TrianglesList } from './triangles-list/triangles-list';
 import { useSelector } from 'react-redux';
 import { trianglesSlice } from '../../store/slices/triangles.slice';
+import { makeStyles } from '@mui/styles';
+import PatchStyles from 'patch-styles';
+
+
+const useStyles = makeStyles(() => ({
+    PageContent: {
+      display: 'flex',
+      padding: '0 24px',
+      gap: '16px',
+    },
+  }
+));
 
 export const TrianglesPage = () => {
+  const classes = useStyles();
   const triangles = useSelector(trianglesSlice.selectors.selectAll);
 
   return (
-    <>
-      <Breadcrumbs active={2} />
+    <PatchStyles classNames={classes}>
+      <>
+        <Breadcrumbs active={2} />
 
-      <div className="PageContent">
-        <TrianglesList triangles={triangles} />
+        <div className="PageContent">
+          <TrianglesList triangles={triangles} />
 
-        <PageDetailsContainer>
-          <FiguresCanvas />
+          <PageDetailsContainer>
+            <FiguresCanvas />
 
-          <Outlet />
+            <Outlet />
 
-        </PageDetailsContainer>
-      </div>
-    </>
+          </PageDetailsContainer>
+        </div>
+      </>
+    </PatchStyles>
   );
 };

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import * as classes from './circle-create-form.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { circlesSlice } from '../../../store/slices/circles.slice';
 import { pointsSlice } from '../../../store/slices/points.slice';
@@ -8,6 +7,34 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../../componetnts/button/button';
 import { MenuItem, TextField } from '@mui/material';
 import PatchStyles from 'patch-styles';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+    CircleCreateForm: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    InputsDiv: {
+      display: 'flex',
+      gap: theme.spacing(2),
+      height: theme.spacing(7),
+    },
+    ActionsDiv: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      gap: theme.spacing(5),
+    },
+    CancelBtn: {
+      color: 'white',
+      textDecoration: 'none',
+
+      '&:hover': {
+        color: 'lightgrey',
+      },
+    },
+  }
+));
 
 const DEFAULT_VALUES = {
   centerId: '',
@@ -15,6 +42,7 @@ const DEFAULT_VALUES = {
 };
 
 export const CircleCreateForm = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const points = useSelector(pointsSlice.selectors.selectAll);
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);

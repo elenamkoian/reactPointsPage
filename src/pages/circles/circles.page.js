@@ -5,8 +5,20 @@ import { Outlet } from 'react-router-dom';
 import { CirclesList } from './circles-list/circles-list';
 import { useSelector } from 'react-redux';
 import { circlesSlice } from '../../store/slices/circles.slice';
+import { makeStyles } from '@mui/styles';
+import PatchStyles from 'patch-styles';
+
+const useStyles = makeStyles(() => ({
+    PageContent: {
+      display: 'flex',
+      padding: '0 24px',
+      gap: '16px',
+    },
+  }
+));
 
 export const CirclesPage = () => {
+  const classes = useStyles();
   // const circles = [
   //   { center: { x: 1, y: 2, name: 'A' }, radius: 4, id: genUid() },
   //   { center: { x: 3, y: 4, name: 'B' }, radius: 7, id: genUid() },
@@ -14,20 +26,23 @@ export const CirclesPage = () => {
   const circles = useSelector(circlesSlice.selectors.selectAll);
 
   return (
-    <>
-      <Breadcrumbs active={1} />
+    <PatchStyles classNames={classes}>
 
-      <div className="PageContent">
-        <CirclesList circles={circles} />
+      <>
+        <Breadcrumbs active={1} />
 
-        <PageDetailsContainer>
-          <FiguresCanvas />
+        <div className="PageContent">
+          <CirclesList circles={circles} />
 
-          <Outlet />
+          <PageDetailsContainer>
+            <FiguresCanvas />
 
-        </PageDetailsContainer>
-      </div>
+            <Outlet />
 
-    </>
+          </PageDetailsContainer>
+        </div>
+
+      </>
+    </PatchStyles>
   );
 };

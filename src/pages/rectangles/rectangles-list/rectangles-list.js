@@ -1,8 +1,20 @@
-import * as classes from './rectangles-list.modul.scss';
 import PatchStyles from 'patch-styles';
 import { RectanglesListItem } from '../rectangles-litst-item/rectangles-list-item';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+    RectanglesList: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: theme.spacing(2),
+      minWidth: '30%',
+      color: theme.palette.text.secondary,
+    },
+  }
+));
 
 export const RectanglesList = ({ rectangles }) => {
+  const classes = useStyles();
   return (
     <PatchStyles classNames={classes}>
       <div className="RectanglesList">

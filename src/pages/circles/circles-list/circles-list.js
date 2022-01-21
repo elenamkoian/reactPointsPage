@@ -1,8 +1,20 @@
 import { CirclesListItem } from '../circles-list-item/circles-list-item';
-import * as classes from './circles-list.module.scss';
 import PatchStyles from 'patch-styles';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+    CirclesList: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: theme.spacing(2),
+      minWidth: '30%',
+      color: theme.palette.text.secondary,
+    },
+  }
+));
 
 export const CirclesList = ({ circles }) => {
+  const classes = useStyles();
   return (
     <PatchStyles classNames={classes}>
       <div className="CirclesList">

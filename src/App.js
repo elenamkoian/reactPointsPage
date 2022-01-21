@@ -1,5 +1,3 @@
-import './App.scss';
-import { Component } from 'react';
 import { PageShell } from './componetnts/page-shell';
 import { Route, Routes } from 'react-router-dom';
 import { PointsPage } from './pages/points/points.page';
@@ -10,10 +8,22 @@ import { TrianglesPage } from './pages/triangles/triangles.page';
 import { TriangleCreateForm } from './pages/triangles/triangle-create-form/triangle-create-form';
 import { RectanglesPage } from './pages/rectangles/rectangles.page';
 import { RectangleCreateForm } from './pages/rectangles/rectangle-create-form/rectangle-create-form';
+import { makeStyles } from '@mui/styles';
+import PatchStyles from 'patch-styles';
 
-export class App extends Component {
-  render() {
-    return (
+const useStyles = makeStyles((theme) => ({
+    AppRoot: {
+      height: '100%',
+      backgroundColor: theme.palette.background.default,
+    }
+  }
+));
+
+export function App() {
+  const classes = useStyles();
+
+  return (
+    <PatchStyles classNames={classes}>
       <div className="AppRoot">
         <Routes>
           <Route path="/" element={<PageShell />}>
@@ -32,8 +42,8 @@ export class App extends Component {
           </Route>
         </Routes>
       </div>
-    );
-  }
+    </PatchStyles>
+  );
 }
 
 export default App;
