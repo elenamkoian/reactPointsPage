@@ -9,14 +9,14 @@ const useStyles = makeStyles((theme) => ({
     CirclesListItem: {
       color: theme.palette.text.primary,
       height: 'auto',
-      borderRadius: 12,
+      borderRadius: theme.spacing(1.5),
       padding: theme.spacing(2),
       border: '1px solid #103153',
       background: theme.palette.blue.card,
       display: 'flex',
       alignItems: 'center',
       gap: theme.spacing(1),
-      fontSize: 14,
+      fontSize: theme.spacing(1.75),
       position: 'relative',
     },
     DeleteCircle: {

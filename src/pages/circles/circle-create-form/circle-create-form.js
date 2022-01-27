@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       gap: theme.spacing(5),
     },
     CancelBtn: {
-      color: 'white',
+      color: theme.palette.text.primary,
       textDecoration: 'none',
 
       '&:hover': {
@@ -99,7 +99,7 @@ export const CircleCreateForm = () => {
             size="large"
             variant="outlined"
             onClick={() => handleSaveBtn()}
-            // disabled={!formValues.center.x || !formValues.center.y || !formValues.center.name || !formValues.radius}
+            disabled={!formValues.centerId || !formValues.radius}
           >
             Save
           </Button>

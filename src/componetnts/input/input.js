@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
     Input: {
       color: theme.palette.text.primary,
-      padding: '4px 16px',
+      padding: [theme.spacing(0.5), theme.spacing(2)],
       outline: 'none',
       background: 'transparent',
       border: 'none',

@@ -13,19 +13,19 @@ const useStyles = makeStyles((theme) => ({
     ButtonList: {
       display: 'flex',
       alignItems: 'center',
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(3),
     },
     Button: {
       display: 'flex',
       alignItems: 'center',
       fontFamily: theme.typography.fontFamily,
       letterSpacing: 1,
-      fontSize: 14,
+      fontSize: theme.spacing(1.75),
       color: theme.palette.text.secondary,
       height: '98%',
       background: 'transparent',
       textDecoration: 'none',
-      padding: ' 0 16px',
+      padding: [0, theme.spacing(2)], //'0 16px',
     },
     Active: {
       borderRadius: 0,
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       fontFamily: theme.typography.fontFamily,
-      letterSpacing: 2,
+      letterSpacing: theme.spacing(0.25), //,2
       marginLeft: theme.spacing(1),
       fontSize: theme.spacing(2),
       color: theme.palette.green.light,

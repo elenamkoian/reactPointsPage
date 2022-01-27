@@ -8,21 +8,17 @@ import { circlesSlice } from '../../store/slices/circles.slice';
 import { makeStyles } from '@mui/styles';
 import PatchStyles from 'patch-styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     PageContent: {
       display: 'flex',
-      padding: '0 24px',
-      gap: '16px',
+      padding: [0, theme.spacing(3)],
+      gap: theme.spacing(4),
     },
   }
 ));
 
 export const CirclesPage = () => {
   const classes = useStyles();
-  // const circles = [
-  //   { center: { x: 1, y: 2, name: 'A' }, radius: 4, id: genUid() },
-  //   { center: { x: 3, y: 4, name: 'B' }, radius: 7, id: genUid() },
-  // ]
   const circles = useSelector(circlesSlice.selectors.selectAll);
 
   return (

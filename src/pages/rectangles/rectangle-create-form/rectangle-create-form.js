@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
   }
 ));
 
-
 const DEFAULT_VALUES = {
   rectangleVerticesId: [],
 };

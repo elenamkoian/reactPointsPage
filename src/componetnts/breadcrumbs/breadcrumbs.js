@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       textDecoration: 'none',
       fontWeight: 'bold',
-      width: theme.spacing(18), //142 px
+      width: theme.spacing(18),
       height: theme.spacing(5.5),
       borderRadius: theme.spacing(1),
       backgroundImage: 'linear-gradient(135deg, #2ba6a1 0%, #03f4a7 100%)',
