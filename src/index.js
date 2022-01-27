@@ -10,7 +10,7 @@ import { GeneralMuiConfig } from './main-providers/general-mui-config';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="reactPointsPage">
         <GeneralMuiConfig>
           <App />
         </GeneralMuiConfig>
