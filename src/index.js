@@ -4,17 +4,17 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { GeneralMuiConfig } from './main-providers/general-mui-config';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="reactPointsPage">
+      <MemoryRouter>
         <GeneralMuiConfig>
           <App />
         </GeneralMuiConfig>
-      </BrowserRouter>
+      </MemoryRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
