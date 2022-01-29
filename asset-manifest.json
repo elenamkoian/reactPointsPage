@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/reactPointsPage/static/js/main.5e4c9249.chunk.js",
-    "main.js.map": "/reactPointsPage/static/js/main.5e4c9249.chunk.js.map",
+    "main.js": "/reactPointsPage/static/js/main.4e87ca9d.chunk.js",
+    "main.js.map": "/reactPointsPage/static/js/main.4e87ca9d.chunk.js.map",
     "runtime-main.js": "/reactPointsPage/static/js/runtime-main.1d22188f.js",
     "runtime-main.js.map": "/reactPointsPage/static/js/runtime-main.1d22188f.js.map",
-    "static/js/2.ab509f7c.chunk.js": "/reactPointsPage/static/js/2.ab509f7c.chunk.js",
-    "static/js/2.ab509f7c.chunk.js.map": "/reactPointsPage/static/js/2.ab509f7c.chunk.js.map",
+    "static/js/2.4f7c6312.chunk.js": "/reactPointsPage/static/js/2.4f7c6312.chunk.js",
+    "static/js/2.4f7c6312.chunk.js.map": "/reactPointsPage/static/js/2.4f7c6312.chunk.js.map",
     "static/js/3.534c681e.chunk.js": "/reactPointsPage/static/js/3.534c681e.chunk.js",
     "static/js/3.534c681e.chunk.js.map": "/reactPointsPage/static/js/3.534c681e.chunk.js.map",
     "index.html": "/reactPointsPage/index.html",
-    "static/js/2.ab509f7c.chunk.js.LICENSE.txt": "/reactPointsPage/static/js/2.ab509f7c.chunk.js.LICENSE.txt",
+    "static/js/2.4f7c6312.chunk.js.LICENSE.txt": "/reactPointsPage/static/js/2.4f7c6312.chunk.js.LICENSE.txt",
     "static/media/logo.d63e1463.svg": "/reactPointsPage/static/media/logo.d63e1463.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.1d22188f.js",
-    "static/js/2.ab509f7c.chunk.js",
-    "static/js/main.5e4c9249.chunk.js"
+    "static/js/2.4f7c6312.chunk.js",
+    "static/js/main.4e87ca9d.chunk.js"
   ]
 }
