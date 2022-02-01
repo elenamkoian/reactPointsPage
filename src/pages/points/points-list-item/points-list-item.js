@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
-import { pointsSlice } from '../../../store/slices/points.slice';
 import PatchStyles from 'patch-styles';
 import { makeStyles } from '@mui/styles';
+import { useDeletePointMutation } from '../../../store/services/points.service';
+import { WithLoader } from '../../../componetnts/with-loader';
 
 const useStyles = makeStyles((theme) => ({
     PointsListItem: {
@@ -42,19 +42,22 @@ const useStyles = makeStyles((theme) => ({
 
 export const PointsListItem = ({ point }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const [deletePoint, { isLoading }] = useDeletePointMutation();
 
   const handleDeletePoint = () => {
-    dispatch(pointsSlice.actions.deletePoint(point.id));
+    deletePoint(point.id);
   };
 
   return (
     <PatchStyles classNames={classes}>
       <div className="PointsListItem">
-      <span className="DeletePoint"
-            onClick={() => handleDeletePoint()}>
-        <FontAwesomeIcon icon={faTimes} />
-      </span>
+
+        <WithLoader isLoading={isLoading} className="DeletePoint">
+           <span className="DeletePoint"
+                 onClick={() => handleDeletePoint()}>
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
+        </WithLoader>
 
         <div className="Avatar">{point.name}</div>
         <span>Coordinate (x: {point.x}, y: {point.y})</span>

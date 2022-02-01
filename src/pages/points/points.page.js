@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux';
-import { pointsSlice } from '../../store/slices/points.slice';
 import { Breadcrumbs } from '../../componetnts/breadcrumbs/breadcrumbs';
 import { PointsList } from './points-list/points-list';
 import { FiguresCanvas } from '../../componetnts/figures-canvas/figures-canvas';
@@ -7,6 +5,7 @@ import { PageDetailsContainer } from '../../componetnts/page-details-container/p
 import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import PatchStyles from 'patch-styles';
+import { useFetchPointsQuery } from '../../store/services/points.service';
 
 const useStyles = makeStyles((theme) => ({
     PageContent: {
@@ -19,7 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
 export const PointsPage = () => {
   const classes = useStyles();
-  const points = useSelector(pointsSlice.selectors.selectAll);
+  const { data: points } = useFetchPointsQuery(null, {
+    selectFromResult: ({ data, ...otherInfo }) => ({
+      data: data && Object.values(data),
+      ...otherInfo
+    })
+  });
 
   return (
     <PatchStyles classNames={classes}>

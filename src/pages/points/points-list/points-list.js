@@ -19,7 +19,7 @@ export const PointsList = ({ points }) => {
     <PatchStyles classNames={classes}>
       <div className="PointsList">
         {
-          points.length ? (
+          points?.length ? (
             points.map((point) => (
                 <PointsListItem
                   key={point.id}

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Input } from '../../../componetnts/input/input';
 import { Button } from '../../../componetnts/button/button';
-import { useDispatch } from 'react-redux';
-import { pointsSlice } from '../../../store/slices/points.slice';
 import { Link } from 'react-router-dom';
 import PatchStyles from 'patch-styles';
 import { makeStyles } from '@mui/styles';
+import { useCreatePointMutation } from '../../../store/services/points.service';
+import genUid from 'light-uid';
 
 const useStyles = makeStyles((theme) => ({
     PointCreateForm: {
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   }
 ));
 
-
 const DEFAULT_VALUES = {
   x: '',
   y: '',
@@ -43,11 +42,12 @@ const DEFAULT_VALUES = {
 
 export const PointCreateForm = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const [createPoint, { isLoading, data }] = useCreatePointMutation();
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 
   const handleCreate = (point) => {
-    dispatch(pointsSlice.actions.createPoint(point));
+    createPoint({ ...point, id: genUid() });
+    // dispatch(pointsSlice.actions.createPoint(point));
   };
 
   const handleInputChange = (ev) => {
