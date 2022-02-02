@@ -13,8 +13,15 @@ export const circlesService = createApi({
     createCircle: build.mutation({
       query: (circle) => ({
         url: `circles/${circle.id}.json`,
-        method: 'PYT',
+        method: 'PUT',
         body: circle,
+      }),
+      invalidatesTags: ['circles'],
+    }),
+    deleteCircle: build.mutation({
+      query: (circleId) => ({
+        url: `circles/${circleId}.json`,
+        method: 'DELETE',
       }),
       invalidatesTags: ['circles'],
     }),
@@ -22,6 +29,7 @@ export const circlesService = createApi({
 });
 
 export const {
-  useFetchPointsQuery,
-  useCreateCircleMutation
+  useFetchCirclesQuery,
+  useCreateCircleMutation,
+  useDeleteCircleMutation
 } = circlesService;

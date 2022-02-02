@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { circlesSlice } from '../../../store/slices/circles.slice';
-import { pointsSlice } from '../../../store/slices/points.slice';
 import { Input } from '../../../componetnts/input/input';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../componetnts/button/button';
 import { MenuItem, TextField } from '@mui/material';
 import PatchStyles from 'patch-styles';
 import { makeStyles } from '@mui/styles';
+import { useFetchPointsQuery } from '../../../store/services/points.service';
+import { useCreateCircleMutation } from '../../../store/services/circles.service';
+import genUid from 'light-uid';
 
 const useStyles = makeStyles((theme) => ({
     CircleCreateForm: {
@@ -43,14 +43,20 @@ const DEFAULT_VALUES = {
 
 export const CircleCreateForm = () => {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const points = useSelector(pointsSlice.selectors.selectAll);
+  const [createCircle] = useCreateCircleMutation();
+  const { data: points } = useFetchPointsQuery(null, {
+    selectFromResult: ({ data, ...otherInfo }) => ({
+      data: data && Object.values(data),
+      ...otherInfo
+    })
+  });
+
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 
   const handleCreate = (circle) => {
     const point = points.find((point) => point.id === circle.centerId);
     circle.center = point;
-    dispatch(circlesSlice.actions.createCircle(circle));
+    createCircle({ ...circle, id: genUid() });
   };
 
   const handleInputValueChange = (ev) => {
@@ -80,7 +86,7 @@ export const CircleCreateForm = () => {
             fullWidth
           >
             {
-              points.map((point) => (
+              points?.map((point) => (
                 <MenuItem
                   key={point.id}
                   value={point.id}

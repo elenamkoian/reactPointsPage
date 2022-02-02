@@ -42,7 +42,7 @@ const DEFAULT_VALUES = {
 
 export const PointCreateForm = () => {
   const classes = useStyles();
-  const [createPoint, { isLoading, data }] = useCreatePointMutation();
+  const [createPoint] = useCreatePointMutation();
   const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 
   const handleCreate = (point) => {

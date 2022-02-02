@@ -1,9 +1,9 @@
-import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { circlesSlice } from '../../../store/slices/circles.slice';
 import PatchStyles from 'patch-styles';
 import { makeStyles } from '@mui/styles';
+import { useDeleteCircleMutation } from '../../../store/services/circles.service';
+import { WithLoader } from '../../../componetnts/with-loader';
 
 const useStyles = makeStyles((theme) => ({
     CirclesListItem: {
@@ -59,19 +59,22 @@ const useStyles = makeStyles((theme) => ({
 
 export const CirclesListItem = ({ circle }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const [deleteCircle, { isLoading }] = useDeleteCircleMutation();
 
   const handleDeleteCircle = () => {
-    dispatch(circlesSlice.actions.deleteCircle(circle.id));
+    deleteCircle(circle.id);
   };
 
   return (
     <PatchStyles classNames={classes}>
       <div className="CirclesListItem">
-      <span className="DeleteCircle"
-            onClick={() => handleDeleteCircle()}>
-        <FontAwesomeIcon icon={faTimes} />
-      </span>
+        <WithLoader isLoading={isLoading} className="DeleteCircle">
+          <span className="DeleteCircle"
+                onClick={() => handleDeleteCircle()}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
+        </WithLoader>
 
         <div className="CirclesListItemContent">
           <div className="CirclesListItemTopContent">

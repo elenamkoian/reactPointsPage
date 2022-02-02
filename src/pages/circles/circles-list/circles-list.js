@@ -1,6 +1,7 @@
 import { CirclesListItem } from '../circles-list-item/circles-list-item';
 import PatchStyles from 'patch-styles';
 import { makeStyles } from '@mui/styles';
+import { useFetchCirclesQuery } from '../../../store/services/circles.service';
 
 const useStyles = makeStyles((theme) => ({
     CirclesList: {
@@ -13,13 +14,21 @@ const useStyles = makeStyles((theme) => ({
   }
 ));
 
-export const CirclesList = ({ circles }) => {
+export const CirclesList = () => {
   const classes = useStyles();
+
+  const { data: circles } = useFetchCirclesQuery(null, {
+    selectFromResult: ({ data, ...otherInfo }) => ({
+      data: data && Object.values(data),
+      ...otherInfo
+    })
+  });
+
   return (
     <PatchStyles classNames={classes}>
       <div className="CirclesList">
         {
-          circles.length ? (
+          circles?.length ? (
             circles.map((circle) => (
                 <CirclesListItem
                   circle={circle}
