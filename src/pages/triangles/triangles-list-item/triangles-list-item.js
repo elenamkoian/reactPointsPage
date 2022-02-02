@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
-import { trianglesSlice } from '../../../store/slices/triangles.slice';
 import PatchStyles from 'patch-styles';
 import { makeStyles } from '@mui/styles';
+import { useDeleteTriangleMutation } from '../../../store/services/triangles.service';
+import { WithLoader } from '../../../componetnts/with-loader';
 
 const useStyles = makeStyles((theme) => ({
     TrianglesListItem: {
@@ -64,18 +64,22 @@ const useStyles = makeStyles((theme) => ({
 
 export const TrianglesListItem = ({ triangle }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const [deleteTriangle, { isLoading }] = useDeleteTriangleMutation();
 
   const handleDeleteTriangle = () => {
-    dispatch(trianglesSlice.actions.deleteTriangle(triangle.id));
+   deleteTriangle(triangle.id);
   };
+
+  console.log(triangle.points, triangle);
 
   return (
     <PatchStyles classNames={classes}>
       <div className="TrianglesListItem">
-      <span className="DeleteTriangle" onClick={() => handleDeleteTriangle()}>
-        <FontAwesomeIcon icon={faTimes} />
-      </span>
+        <WithLoader isLoading={isLoading} className="DeleteTriangle">
+          <span className="DeleteTriangle" onClick={() => handleDeleteTriangle()}>
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
+        </WithLoader>
 
         <div className="TrianglesListItemContent">
           <div className="TrianglesListItemTopContent">
@@ -84,7 +88,7 @@ export const TrianglesListItem = ({ triangle }) => {
           <div className="TrianglesListItemBottomContent">
 
             {
-              triangle.points.map((vertex) => (
+              triangle.points?.map((vertex) => (
                 <div className="Vertices" key={vertex.id}>
                   <span className="Avatar">{vertex.name}</span>
                   <span>vertex coordinate ( x: {vertex.x}, y: {vertex.y} )</span>

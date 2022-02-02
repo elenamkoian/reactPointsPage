@@ -5,7 +5,6 @@ import { PageDetailsContainer } from '../../componetnts/page-details-container/p
 import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
 import PatchStyles from 'patch-styles';
-import { useFetchPointsQuery } from '../../store/services/points.service';
 
 const useStyles = makeStyles((theme) => ({
     PageContent: {
@@ -18,12 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const PointsPage = () => {
   const classes = useStyles();
-  const { data: points } = useFetchPointsQuery(null, {
-    selectFromResult: ({ data, ...otherInfo }) => ({
-      data: data && Object.values(data),
-      ...otherInfo
-    })
-  });
 
   return (
     <PatchStyles classNames={classes}>
@@ -31,7 +24,7 @@ export const PointsPage = () => {
         <Breadcrumbs active={0} />
 
         <div className="PageContent">
-          <PointsList points={points} />
+          <PointsList />
 
           <PageDetailsContainer>
             <FiguresCanvas />

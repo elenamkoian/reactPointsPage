@@ -43,6 +43,7 @@ const DEFAULT_VALUES = {
 
 export const CircleCreateForm = () => {
   const classes = useStyles();
+  const [formValues, setFormValues] = useState(DEFAULT_VALUES);
   const [createCircle] = useCreateCircleMutation();
   const { data: points } = useFetchPointsQuery(null, {
     selectFromResult: ({ data, ...otherInfo }) => ({
@@ -50,8 +51,6 @@ export const CircleCreateForm = () => {
       ...otherInfo
     })
   });
-
-  const [formValues, setFormValues] = useState(DEFAULT_VALUES);
 
   const handleCreate = (circle) => {
     const point = points.find((point) => point.id === circle.centerId);

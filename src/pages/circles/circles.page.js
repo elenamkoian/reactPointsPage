@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const CirclesPage = () => {
   const classes = useStyles();
-  // const circles = useSelector(circlesSlice.selectors.selectAll);
 
   return (
     <PatchStyles classNames={classes}>

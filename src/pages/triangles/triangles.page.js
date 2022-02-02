@@ -3,11 +3,8 @@ import { FiguresCanvas } from '../../componetnts/figures-canvas/figures-canvas';
 import { PageDetailsContainer } from '../../componetnts/page-details-container/page-details-container';
 import { Outlet } from 'react-router-dom';
 import { TrianglesList } from './triangles-list/triangles-list';
-import { useSelector } from 'react-redux';
-import { trianglesSlice } from '../../store/slices/triangles.slice';
 import { makeStyles } from '@mui/styles';
 import PatchStyles from 'patch-styles';
-
 
 const useStyles = makeStyles((theme) => ({
     PageContent: {
@@ -20,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const TrianglesPage = () => {
   const classes = useStyles();
-  const triangles = useSelector(trianglesSlice.selectors.selectAll);
+  // const triangles = useSelector(trianglesSlice.selectors.selectAll);
 
   return (
     <PatchStyles classNames={classes}>
@@ -28,7 +25,7 @@ export const TrianglesPage = () => {
         <Breadcrumbs active={2} />
 
         <div className="PageContent">
-          <TrianglesList triangles={triangles} />
+          <TrianglesList />
 
           <PageDetailsContainer>
             <FiguresCanvas />

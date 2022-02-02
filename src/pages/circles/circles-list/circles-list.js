@@ -29,7 +29,7 @@ export const CirclesList = () => {
       <div className="CirclesList">
         {
           circles?.length ? (
-            circles.map((circle) => (
+            circles?.map((circle) => (
                 <CirclesListItem
                   circle={circle}
                   key={circle.id}

@@ -1,6 +1,7 @@
 import PatchStyles from 'patch-styles';
 import { TrianglesListItem } from '../triangles-list-item/triangles-list-item';
 import { makeStyles } from '@mui/styles';
+import { useFetchTrianglesQuery } from '../../../store/services/triangles.service';
 
 const useStyles = makeStyles((theme) => ({
     TrianglesList: {
@@ -13,14 +14,22 @@ const useStyles = makeStyles((theme) => ({
   }
 ));
 
-export const TrianglesList = ({ triangles }) => {
+export const TrianglesList = () => {
   const classes = useStyles();
+  const { data: triangles } = useFetchTrianglesQuery(null, {
+    selectFromResult: ({ data, ...otherInfo }) => ({
+      data: data && Object.values(data),
+      ...otherInfo,
+    }),
+  });
+
+
   return (
     <PatchStyles classNames={classes}>
       <div className="TrianglesList">
         {
-          triangles.length ? (
-            triangles.map((triangle) => {
+          triangles?.length ? (
+            triangles?.map((triangle) => {
               return <TrianglesListItem key={triangle.id} triangle={triangle} />;
             })
           ) : (

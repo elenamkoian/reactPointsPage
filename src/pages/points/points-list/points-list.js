@@ -1,6 +1,7 @@
 import { PointsListItem } from '../points-list-item/points-list-item';
 import PatchStyles from 'patch-styles';
 import { makeStyles } from '@mui/styles';
+import { useFetchPointsQuery } from '../../../store/services/points.service';
 
 const useStyles = makeStyles((theme) => ({
     PointsList: {
@@ -13,14 +14,21 @@ const useStyles = makeStyles((theme) => ({
   }
 ));
 
-export const PointsList = ({ points }) => {
+export const PointsList = () => {
   const classes = useStyles();
+  const { data: points } = useFetchPointsQuery(null, {
+    selectFromResult: ({ data, ...otherInfo }) => ({
+      data: data && Object.values(data),
+      ...otherInfo
+    })
+  });
+
   return (
     <PatchStyles classNames={classes}>
       <div className="PointsList">
         {
           points?.length ? (
-            points.map((point) => (
+            points?.map((point) => (
                 <PointsListItem
                   key={point.id}
                   point={point}
