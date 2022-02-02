@@ -10,14 +10,13 @@ const useStyles = makeStyles((theme) => ({
     PageContent: {
       display: 'flex',
       padding: [0, theme.spacing(3)],
-      gap: theme.spacing(2),
+      gap: theme.spacing(4),
     },
   }
 ));
 
 export const TrianglesPage = () => {
   const classes = useStyles();
-  // const triangles = useSelector(trianglesSlice.selectors.selectAll);
 
   return (
     <PatchStyles classNames={classes}>

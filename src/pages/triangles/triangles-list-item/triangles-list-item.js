@@ -70,8 +70,6 @@ export const TrianglesListItem = ({ triangle }) => {
    deleteTriangle(triangle.id);
   };
 
-  console.log(triangle.points, triangle);
-
   return (
     <PatchStyles classNames={classes}>
       <div className="TrianglesListItem">

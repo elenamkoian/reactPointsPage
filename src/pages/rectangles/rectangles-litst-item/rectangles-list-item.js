@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
 import PatchStyles from 'patch-styles';
-import { rectanglesSlice } from '../../../store/slices/rectangles.slice';
 import { makeStyles } from '@mui/styles';
+import { useDeleteRectangleMutation } from '../../../store/services/rectangles.service';
+import { WithLoader } from '../../../componetnts/with-loader';
 
 const useStyles = makeStyles((theme) => ({
     RectanglesListItem: {
@@ -64,20 +64,21 @@ const useStyles = makeStyles((theme) => ({
 
 export const RectanglesListItem = ({ rectangle }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const [deleteRectangle, { isLoading }] = useDeleteRectangleMutation();
 
   const handleDeleteRectangle = () => {
-    dispatch(rectanglesSlice.actions.deleteRectangle(rectangle.id));
+    deleteRectangle(rectangle.id);
   };
 
   return (
     <PatchStyles classNames={classes}>
       <div className="RectanglesListItem">
-      <span className="DeleteRectangle"
-            onClick={() => handleDeleteRectangle()}>
-        <FontAwesomeIcon icon={faTimes} />
-      </span>
-
+        <WithLoader isLoading={isLoading} className="DeleteRectangle">
+           <span className="DeleteRectangle"
+                 onClick={() => handleDeleteRectangle()}>
+             <FontAwesomeIcon icon={faTimes} />
+           </span>
+        </WithLoader>
         <div className="RectanglesListItemContent">
           <div className="RectanglesListItemTopContent">
             <span>{rectangle.name} rectangle</span>
@@ -85,7 +86,7 @@ export const RectanglesListItem = ({ rectangle }) => {
           <div className="RectanglesListItemBottomContent">
 
             {
-              rectangle.vertices.map((vertex) => (
+              rectangle.vertices?.map((vertex) => (
                 <div className="Vertices" key={vertex.id}>
                   <span className="Avatar">{vertex.name}</span>
                   <span>vertex coordinate ( x: {vertex.x}, y: {vertex.y} )</span>
